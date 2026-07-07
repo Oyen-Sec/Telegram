@@ -1,0 +1,21 @@
+# Environment
+.env
+
+# Session files
+*.session
+*.session-journal
+
+# Database
+*.db
+
+# Checkpoints
+checkpoint.json
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
