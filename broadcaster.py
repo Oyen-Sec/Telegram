@@ -15,7 +15,7 @@ logging.getLogger("pyrogram.client").setLevel(logging.ERROR)
 MESSAGE = """🔥 LAZARUS SECURITY TESTING
 
 💳 Payment: QRIS | USDT | BTC | ETH | TRON
-✉️ Order: @MhZerus | @babynocryy
+✉️ @MhZerus | @babynocryy
 
 ✅ WHY CHOOSE US?
 • 15+ target DOWN guaranteed every month
@@ -26,10 +26,10 @@ MESSAGE = """🔥 LAZARUS SECURITY TESTING
 📦 PAKET
 
 [ HARIAN ] Rp 500.000
-Cocok buat testing, 1 target, full report
+1 target, full report
 
 [ BULANAN ] Rp 9.000.000
-Unlimited target, prioritas 24/7
+UNLIMITED TARGET — no limit! semua target yang kamu report kami basmi. prioritas 24/7
 
 [ RETAINER ]
 1 Bulan : Rp 9.000.000
@@ -41,10 +41,10 @@ Unlimited target, prioritas 24/7
 Deindex Google | DDoS | Takedown
 Brute Force | Exploit | L7 & L4
 
-📌 Cara Order: Kirim Target → Tes Gratis → Bayar → GAS
+📌 Order: Kirim Target → Tes Gratis → Bayar → GAS
 
 🔗 Channel: @LazarusDdos
-📞 Contact: @MhZerus"""
+📞 @MhZerus | @babynocryy"""
 
 running = True
 
