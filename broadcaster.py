@@ -12,70 +12,39 @@ import config
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pyrogram.client").setLevel(logging.ERROR)
 
-MESSAGE = """🔥✅SPECIAL SECURITY TESTING SERVICE 🔥✅
-💳Payment: QRIS | USDT | BTC | ETH | TRON
-✉️Order & Info: @MhZerus ✈️
+MESSAGE = """═══ LAZARUS DDOS SERVICE ═══
 
-🔥 LAZARUS GRUP — FULL SERVICE 🔥
+✅ SPECIAL SECURITY TESTING
+💳 QRIS / USDT / BTC / ETH / TRON
+✉️ @MhZerus | @babynocryy
 
-▶️PAKET HARIAN (TESTING / HOLD)
-👉Rp 500.000 / hari
-👉1 target spesifik
-🔴 Full report harian
-👉Cocok buat testing sebelum ambil paket bulanan
+━━━ PAKET ━━━
 
-▶️PAKET BULANAN (UNLIMITED TARGET)
-👉Rp 9.000.000 / bulan
-👉 Target UNLIMITED selama 1 bulan
-🔴 Full report harian via grup khusus Telegram
-👉 Prioritas serangan 24/7
-👉 Dijamin 15 target DOWN dalam sebulan
+[ HARIAN ] Rp 500.000
+1 target, full report
 
-▶️PAKET RETAINER (LANGGANAN JANGKA PANJANG)
-🎚1 Bulan — Rp 9.000.000 (Friend: Rp 7.000.000)
-🎚 3 Bulan — Rp 25.000.000 (Friend: Rp 20.000.000)
-🎚 6 Bulan — Rp 45.000.000 (Friend: Rp 38.000.000)
-🎚 1 Tahun — Rp 80.000.000 (Friend: Rp 70.000.000)
+[ BULANAN ] Rp 9.000.000
+Unlimited target, 15 target DOWN guaranteed
 
-Friend Price khusus client referensi dari pembeli lama ✨
+[ RETAINER ]
+1 BLN : Rp 9.000.000
+3 BLN : Rp 25.000.000
+6 BLN : Rp 45.000.000
+1 THN : Rp 80.000.000
 
-▶️LAYANAN KAMI
-🟢Turunkan Index Google (Deindex)
-🟢 DDoS Web Judi / Slot / Phising
-🟢 Takedown Landing Page & Server
-🟢 Brute Force & Exploit
-🟢 L7 + L4 Full Arsenal
-🟢 WAF Bypass (Cloudflare, etc)
-🟢 Origin Discovery (52 Vectors)
+━━━ LAYANAN ━━━
+• Deindex Google
+• DDoS Web Slot/Judi
+• Takedown Server
+• WAF Bypass
+• Origin Discovery
 
-▶️WORKFLOW (WAJIB)
-🎚Kirim Target → Tes Gratis → Bayar → GAS & HOLD
-☄️Report harian dikirim via Telegram
+━━━ CARA ORDER ━━━
+Kirim Target → Tes Gratis → Bayar → GAS
 
-⚠️KETENTUAN REFUND
-Full payment di awal bulan (sistem retainer).
-Jika dalam 1 bulan mencapai 15 target DOWN → Full payment WAJIB (tidak bisa refund).
-Jika di bawah 10 target → Bisa diatur ulang / kompensasi sesuai kesepakatan awal.
-Grup khusus dibuat untuk client paket bulanan sebagai tempat report real-time.
+⚠️ Refund: < 10 target bisa diatur ulang
 
-📢OFFICIAL CONTACT
-💳@MhZerus | @babynocryy
-🔈Channel: https://t.me/LazarusDdos
-⚠️Proof: https://t.me/mhZerus
-
-TAGS
-🟢SEO Services
-🟢DDoS Services
-🟢Hold Services
-🟢Suspend Services
-🟢Takedown Services
-🟢 Phishing
-🟢L7 Attack
-🟢L4 Attack
-🟢Captcha Bypass
-🟢Google Takedown
-🟢Deindex Services
-🟢Slot Takedown"""
+🔗 @LazarusDdos | @mhZerus"""
 
 running = True
 
