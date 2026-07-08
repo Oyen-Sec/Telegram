@@ -138,6 +138,12 @@ async def main():
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
+    def silent_exc_handler(loop, context):
+        msg = str(context.get("exception", ""))
+        if "Peer id invalid" in msg or "ID not found" in msg or "handle_updates" in str(context.get("message", "")):
+            return
+        loop.default_exception_handler(context)
+    loop.set_exception_handler(silent_exc_handler)
     try:
         loop.run_until_complete(main())
     except KeyboardInterrupt:
