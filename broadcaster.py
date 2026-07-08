@@ -129,8 +129,8 @@ async def main():
         await send_to_group(app, group, (index % total) + 1, total)
         index += 1
         if running:
-            log("WAIT", "Waiting 60s before next broadcast...")
-            await asyncio.sleep(60)
+            log("WAIT", "Waiting 10s before next broadcast...")
+            await asyncio.sleep(10)
 
     await app.stop()
     log("INFO", "Broadcaster stopped")
