@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import asyncio
 import sys
 import os
@@ -11,72 +12,70 @@ import config
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pyrogram.client").setLevel(logging.ERROR)
 
-MESSAGE = """
-\xf0\x9f\x94\xb4\xe2\x9c\x85SPECIAL SECURITY TESTING SERVICE \xf0\x9f\x94\xb4\xe2\x9c\x85
-\xf0\x9f\x92\xb3Payment: QRIS | USDT | BTC | ETH | TRON
-\xe2\x9c\x89\xef\xb8\x8fOrder & Info: @MhZerus \xe2\x9c\x88\xef\xb8\x8f
+MESSAGE = """🔥✅SPECIAL SECURITY TESTING SERVICE 🔥✅
+💳Payment: QRIS | USDT | BTC | ETH | TRON
+✉️Order & Info: @MhZerus ✈️
 
-\xf0\x9f\x94\xa5 LAZARUS GRUP \xe2\x80\x94 FULL SERVICE \xf0\x9f\x94\xa5
+🔥 LAZARUS GRUP — FULL SERVICE 🔥
 
-\xe2\x96\xb6\xef\xb8\x8fPAKET HARIAN (TESTING / HOLD)
-\xf0\x9f\x91\x89Rp 500.000 / hari
-\xf0\x9f\x91\x891 target spesifik
-\xf0\x9f\x94\xb4 Full report harian
-\xf0\x9f\x91\x89Cocok buat testing sebelum ambil paket bulanan
+▶️PAKET HARIAN (TESTING / HOLD)
+👉Rp 500.000 / hari
+👉1 target spesifik
+🔴 Full report harian
+👉Cocok buat testing sebelum ambil paket bulanan
 
-\xe2\x96\xb6\xef\xb8\x8fPAKET BULANAN (UNLIMITED TARGET)
-\xf0\x9f\x91\x89Rp 9.000.000 / bulan
-\xf0\x9f\x91\x89 Target UNLIMITED selama 1 bulan
-\xf0\x9f\x94\xb4 Full report harian via grup khusus Telegram
-\xf0\x9f\x91\x89 Prioritas serangan 24/7
-\xf0\x9f\x91\x89 Dijamin 15 target DOWN dalam sebulan
+▶️PAKET BULANAN (UNLIMITED TARGET)
+👉Rp 9.000.000 / bulan
+👉 Target UNLIMITED selama 1 bulan
+🔴 Full report harian via grup khusus Telegram
+👉 Prioritas serangan 24/7
+👉 Dijamin 15 target DOWN dalam sebulan
 
-\xe2\x96\xb6\xef\xb8\x8fPAKET RETAINER (LANGGANAN JANGKA PANJANG)
-\xf0\x9f\x8e\x9a1 Bulan \xe2\x80\x94 Rp 9.000.000 (Friend: Rp 7.000.000)
-\xf0\x9f\x8e\x9a 3 Bulan \xe2\x80\x94 Rp 25.000.000 (Friend: Rp 20.000.000)
-\xf0\x9f\x8e\x9a 6 Bulan \xe2\x80\x94 Rp 45.000.000 (Friend: Rp 38.000.000)
-\xf0\x9f\x8e\x9a 1 Tahun \xe2\x80\x94 Rp 80.000.000 (Friend: Rp 70.000.000)
+▶️PAKET RETAINER (LANGGANAN JANGKA PANJANG)
+🎚1 Bulan — Rp 9.000.000 (Friend: Rp 7.000.000)
+🎚 3 Bulan — Rp 25.000.000 (Friend: Rp 20.000.000)
+🎚 6 Bulan — Rp 45.000.000 (Friend: Rp 38.000.000)
+🎚 1 Tahun — Rp 80.000.000 (Friend: Rp 70.000.000)
 
-Friend Price khusus client referensi dari pembeli lama \xe2\x9c\xa8
+Friend Price khusus client referensi dari pembeli lama ✨
 
-\xe2\x96\xb6\xef\xb8\x8fLAYANAN KAMI
-\xf0\x9f\x9f\xa2Turunkan Index Google (Deindex)
-\xf0\x9f\x9f\xa2 DDoS Web Judi / Slot / Phising
-\xf0\x9f\x9f\xa2 Takedown Landing Page & Server
-\xf0\x9f\x9f\xa2 Brute Force & Exploit
-\xf0\x9f\x9f\xa2 L7 + L4 Full Arsenal
-\xf0\x9f\x9f\xa2 WAF Bypass (Cloudflare, etc)
-\xf0\x9f\x9f\xa2 Origin Discovery (52 Vectors)
+▶️LAYANAN KAMI
+🟢Turunkan Index Google (Deindex)
+🟢 DDoS Web Judi / Slot / Phising
+🟢 Takedown Landing Page & Server
+🟢 Brute Force & Exploit
+🟢 L7 + L4 Full Arsenal
+🟢 WAF Bypass (Cloudflare, etc)
+🟢 Origin Discovery (52 Vectors)
 
-\xe2\x96\xb6\xef\xb8\x8fWORKFLOW (WAJIB)
-\xf0\x9f\x8e\x9aKirim Target \xe2\x86\x92 Tes Gratis \xe2\x86\x92 Bayar \xe2\x86\x92 GAS & HOLD
-\xe2\x98\x84\xef\xb8\x8fReport harian dikirim via Telegram
+▶️WORKFLOW (WAJIB)
+🎚Kirim Target → Tes Gratis → Bayar → GAS & HOLD
+☄️Report harian dikirim via Telegram
 
-\xe2\x9a\xa0\xef\xb8\x8fKETENTUAN REFUND
+⚠️KETENTUAN REFUND
 Full payment di awal bulan (sistem retainer).
-Jika dalam 1 bulan mencapai 15 target DOWN \xe2\x86\x92 Full payment WAJIB (tidak bisa refund).
-Jika di bawah 10 target \xe2\x86\x92 Bisa diatur ulang / kompensasi sesuai kesepakatan awal.
+Jika dalam 1 bulan mencapai 15 target DOWN → Full payment WAJIB (tidak bisa refund).
+Jika di bawah 10 target → Bisa diatur ulang / kompensasi sesuai kesepakatan awal.
 Grup khusus dibuat untuk client paket bulanan sebagai tempat report real-time.
 
-\xf0\x9f\x93\xa2OFFICIAL CONTACT
-\xf0\x9f\x92\xb3@MhZerus | @babynocryy
-\xf0\x9f\x94\x88Channel: https://t.me/LazarusDdos
-\xe2\x9a\xa0\xef\xb8\x8fProof: https://t.me/mhZerus
+📢OFFICIAL CONTACT
+💳@MhZerus | @babynocryy
+🔈Channel: https://t.me/LazarusDdos
+⚠️Proof: https://t.me/mhZerus
 
 TAGS
-\xf0\x9f\x9f\xa2SEO Services
-\xf0\x9f\x9f\xa2DDoS Services
-\xf0\x9f\x9f\xa2Hold Services
-\xf0\x9f\x9f\xa2Suspend Services
-\xf0\x9f\x9f\xa2Takedown Services
-\xf0\x9f\x9f\xa2 Phishing
-\xf0\x9f\x9f\xa2L7 Attack
-\xf0\x9f\x9f\xa2L4 Attack
-\xf0\x9f\x9f\xa2Captcha Bypass
-\xf0\x9f\x9f\xa2Google Takedown
-\xf0\x9f\x9f\xa2Deindex Services
-\xf0\x9f\x9f\xa2Slot Takedown
-"""
+🟢SEO Services
+🟢DDoS Services
+🟢Hold Services
+🟢Suspend Services
+🟢Takedown Services
+🟢 Phishing
+🟢L7 Attack
+🟢L4 Attack
+🟢Captcha Bypass
+🟢Google Takedown
+🟢Deindex Services
+🟢Slot Takedown"""
 
 running = True
 
