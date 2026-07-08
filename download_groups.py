@@ -16,11 +16,17 @@ SOURCES_FILE = config.SOURCES_FILE
 
 RAW_URLS = [
     "https://raw.githubusercontent.com/itgoyo/TelegramGroup/master/README.md",
-    "https://raw.githubusercontent.com/AZeC4/TelegramChannels/main/README.md",
     "https://raw.githubusercontent.com/handsomesyx2/TelegramChannel/main/README.md",
     "https://raw.githubusercontent.com/aha-woo/telegram_channel_collect/main/README.md",
     "https://raw.githubusercontent.com/jackhawks/rectg/main/README.md",
     "https://raw.githubusercontent.com/henry-bai3006/TGgroup/main/README.md",
+    "https://raw.githubusercontent.com/CorrieOnly/telegram-list/master/README.md",
+    "https://raw.githubusercontent.com/tghub/telegram-list/master/README.md",
+    "https://raw.githubusercontent.com/Gavinchen92/telegram-groups/main/README.md",
+    "https://raw.githubusercontent.com/ds19991999/TgList/master/doc/Telegram%E7%BE%A4%E7%BB%84%E5%AF%BC%E8%88%AA.md",
+    "https://raw.githubusercontent.com/hendisantika/List-All-Programming-Telegram-Group/master/README.md",
+    "https://raw.githubusercontent.com/lawrencegs/grup-telegram-developer-id/master/README.md",
+    "https://raw.githubusercontent.com/aanfaisal/ListTelegram/master/README.md",
 ]
 
 def extract_usernames(text):
