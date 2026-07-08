@@ -58,7 +58,7 @@ async def main():
 
     async def start_client():
         try:
-            app = Client(config.SESSION_BASE, api_id=config.API_ID, api_hash=config.API_HASH)
+            app = Client(config.SESSION_BASE, api_id=config.API_ID, api_hash=config.API_HASH, no_updates=True)
             await app.start()
             return app
         except Exception as e:

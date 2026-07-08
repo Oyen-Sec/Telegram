@@ -10,7 +10,7 @@ SESSION_NAME = sys.argv[1] if len(sys.argv) > 1 else "lazarus"
 async def main():
     print(f"Creating session: {SESSION_NAME}")
     print("Enter phone number + code when prompted...")
-    app = Client(SESSION_NAME, api_id=config.API_ID, api_hash=config.API_HASH)
+    app = Client(SESSION_NAME, api_id=config.API_ID, api_hash=config.API_HASH, no_updates=True)
     await app.start()
     me = await app.get_me()
     print(f"\n✅ Login success!")
