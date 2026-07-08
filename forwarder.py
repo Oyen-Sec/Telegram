@@ -56,9 +56,11 @@ async def main():
     log("INFO", f"Source: {source_chat}, Message ID: {message_id}")
     log("INFO", f"Targets: {len(sources)} groups, Delay: {delay}s, Cycle delay: {cycle_delay}s")
 
+    session_name = os.environ.get("SESSION_BASE") or config.SESSION_BASE
+
     async def start_client():
         try:
-            app = Client(config.SESSION_BASE, api_id=config.API_ID, api_hash=config.API_HASH, no_updates=True)
+            app = Client(session_name, api_id=config.API_ID, api_hash=config.API_HASH, no_updates=True)
             await app.start()
             return app
         except Exception as e:
