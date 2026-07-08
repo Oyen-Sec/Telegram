@@ -12,39 +12,39 @@ import config
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("pyrogram.client").setLevel(logging.ERROR)
 
-MESSAGE = """═══ LAZARUS DDOS SERVICE ═══
+MESSAGE = """🔥 LAZARUS SECURITY TESTING
 
-✅ SPECIAL SECURITY TESTING
-💳 QRIS / USDT / BTC / ETH / TRON
-✉️ @MhZerus | @babynocryy
+💳 Payment: QRIS | USDT | BTC | ETH | TRON
+✉️ Order: @MhZerus | @babynocryy
 
-━━━ PAKET ━━━
+✅ WHY CHOOSE US?
+• 15+ target DOWN guaranteed every month
+• 52 vectors origin discovery
+• WAF bypass (Cloudflare etc)
+• Full report harian realtime
+
+📦 PAKET
 
 [ HARIAN ] Rp 500.000
-1 target, full report
+Cocok buat testing, 1 target, full report
 
 [ BULANAN ] Rp 9.000.000
-Unlimited target, 15 target DOWN guaranteed
+Unlimited target, prioritas 24/7
 
 [ RETAINER ]
-1 BLN : Rp 9.000.000
-3 BLN : Rp 25.000.000
-6 BLN : Rp 45.000.000
-1 THN : Rp 80.000.000
+1 Bulan : Rp 9.000.000
+3 Bulan : Rp 25.000.000
+6 Bulan : Rp 45.000.000
+1 Tahun : Rp 80.000.000
 
-━━━ LAYANAN ━━━
-• Deindex Google
-• DDoS Web Slot/Judi
-• Takedown Server
-• WAF Bypass
-• Origin Discovery
+🎯 LAYANAN
+Deindex Google | DDoS | Takedown
+Brute Force | Exploit | L7 & L4
 
-━━━ CARA ORDER ━━━
-Kirim Target → Tes Gratis → Bayar → GAS
+📌 Cara Order: Kirim Target → Tes Gratis → Bayar → GAS
 
-⚠️ Refund: < 10 target bisa diatur ulang
-
-🔗 @LazarusDdos | @mhZerus"""
+🔗 Channel: @LazarusDdos
+📞 Contact: @MhZerus"""
 
 running = True
 
