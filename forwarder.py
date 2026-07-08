@@ -54,21 +54,29 @@ async def main():
         return
 
     async def join_and_forward(target):
-        try:
-            await app.join_chat(target)
-            await asyncio.sleep(1)
-        except Exception:
-            pass
-        try:
-            await app.forward_messages(target, source_chat, [message_id])
-            return True
-        except FloodWait as e:
-            raise e
-        except (ChatWriteForbidden, UsernameNotOccupied, PeerIdInvalid):
-            return False
-        except Exception as e:
-            log("FAIL", f"{target}: {str(e)[:80]}")
-            return False
+        already_joined = False
+        for attempt in range(2):
+            try:
+                await app.forward_messages(target, source_chat, [message_id])
+                return True
+            except FloodWait as e:
+                raise e
+            except (UsernameNotOccupied, PeerIdInvalid):
+                return False
+            except ChatWriteForbidden:
+                if not already_joined:
+                    try:
+                        await app.join_chat(target)
+                        await asyncio.sleep(2)
+                        already_joined = True
+                        continue
+                    except Exception:
+                        return False
+                return False
+            except Exception as e:
+                log("FAIL", f"{target}: {str(e)[:80]}")
+                return False
+        return False
 
     while running:
         total = len(sources)
