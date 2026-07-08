@@ -3,6 +3,7 @@
 import asyncio
 import sys
 import os
+import random
 import logging
 from pyrogram import Client
 from pyrogram.errors import FloodWait, ChatWriteForbidden, UserChannelsTooMuch, UsernameNotOccupied, PeerIdInvalid
@@ -23,8 +24,8 @@ async def main():
         print("  cycle_delay = seconds between full rounds (default 300 = 5 min)")
         print("  target      = single group (omits sources.txt)")
         print("Examples:")
-        print("  python forwarder.py @LazarusDdos 83 10")
-        print("  python forwarder.py @LazarusDdos 83 10 300 @testgroup")
+        print("  python forwarder.py @LazarusDdos 85 60")
+        print("  python forwarder.py @LazarusDdos 85 60 300 @testgroup")
         sys.exit(1)
 
     source_chat = sys.argv[1]
@@ -45,13 +46,28 @@ async def main():
     log("INFO", f"Source: {source_chat}, Message ID: {message_id}")
     log("INFO", f"Targets: {len(sources)} groups, Delay: {delay}s, Cycle delay: {cycle_delay}s")
 
-    try:
-        app = Client(config.SESSION_BASE, api_id=config.API_ID, api_hash=config.API_HASH)
-        await app.start()
-        log("INFO", "Session started")
-    except Exception as e:
-        log("ERROR", f"Failed to start: {e}")
+    async def start_client():
+        try:
+            app = Client(config.SESSION_BASE, api_id=config.API_ID, api_hash=config.API_HASH)
+            await app.start()
+            return app
+        except Exception as e:
+            log("ERROR", f"Failed to start client: {e}")
+            return None
+
+    app = await start_client()
+    if not app:
         return
+
+    async def restart_client():
+        nonlocal app
+        try:
+            await app.stop()
+        except Exception:
+            pass
+        await asyncio.sleep(3)
+        app = await start_client()
+        return app is not None
 
     async def join_and_forward(target):
         already_joined = False
@@ -67,12 +83,18 @@ async def main():
                 if not already_joined:
                     try:
                         await app.join_chat(target)
-                        await asyncio.sleep(2)
+                        await asyncio.sleep(random.randint(2, 5))
                         already_joined = True
                         continue
                     except Exception:
                         return False
                 return False
+            except (OSError, ConnectionError, TimeoutError) as e:
+                log("WARN", f"Connection lost: {str(e)[:50]}. Reconnecting...")
+                ok = await restart_client()
+                if not ok:
+                    return False
+                continue
             except Exception as e:
                 log("FAIL", f"{target}: {str(e)[:80]}")
                 return False
@@ -91,20 +113,37 @@ async def main():
                     log("SKIP", f"[{i + 1}/{total}] Cannot send to {group}")
             except FloodWait as e:
                 log("FLOOD", f"Flood wait {e.value}s")
-                await asyncio.sleep(e.value)
+                await asyncio.sleep(min(e.value, 3600))
+                if e.value > 60:
+                    log("INFO", "Reconnecting after flood wait...")
+                    ok = await restart_client()
+                    if not ok:
+                        break
+                if e.value > 3600:
+                    log("WARN", f"Long flood ({e.value}s), continuing anyway...")
             except UserChannelsTooMuch:
                 log("ERROR", "Too many groups joined")
                 running = False
                 break
+            except (OSError, ConnectionError) as e:
+                log("WARN", f"Socket error in loop: {str(e)[:50]}. Reconnecting...")
+                ok = await restart_client()
+                if not ok:
+                    break
 
             if running:
-                await asyncio.sleep(delay)
+                jitter = random.uniform(0.5, 1.5)
+                await asyncio.sleep(delay * jitter)
 
         if running and cycle_delay > 0:
             log("INFO", f"Cycle done. Waiting {cycle_delay}s before next round...")
             await asyncio.sleep(cycle_delay)
+            log("INFO", "Starting next cycle...")
 
-    await app.stop()
+    try:
+        await app.stop()
+    except Exception:
+        pass
     log("INFO", "Forwarder stopped")
 
 if __name__ == "__main__":
