@@ -27,6 +27,19 @@ RAW_URLS = [
     "https://raw.githubusercontent.com/hendisantika/List-All-Programming-Telegram-Group/master/README.md",
     "https://raw.githubusercontent.com/lawrencegs/grup-telegram-developer-id/master/README.md",
     "https://raw.githubusercontent.com/aanfaisal/ListTelegram/master/README.md",
+    "https://raw.githubusercontent.com/ItIsMeCall911/Awesome-Telegram-OSINT/main/README.md",
+    "https://raw.githubusercontent.com/palark/awesome-devops-telegram/master/README.md",
+    "https://raw.githubusercontent.com/learn-anything/telegram-groups/master/readme.md",
+    "https://raw.githubusercontent.com/telegram-list/telegram-list/master/README.md",
+    "https://raw.githubusercontent.com/telegramchannels/telegramchannels/master/README.md",
+    "https://raw.githubusercontent.com/telegram-group-list/telegram-group-list/master/README.md",
+    "https://raw.githubusercontent.com/telegram-groups/telegram-groups/master/README.md",
+    "https://raw.githubusercontent.com/telegram-groups-collection/telegram-groups-collection/master/README.md",
+    "https://raw.githubusercontent.com/telegramlist/telegramlist/master/README.md",
+    "https://raw.githubusercontent.com/telegramchannelslist/telegramchannelslist/master/README.md",
+    "https://raw.githubusercontent.com/tg-groups/tg-groups/master/README.md",
+    "https://raw.githubusercontent.com/telegram-groups-list/telegram-groups-list/master/README.md",
+    "https://raw.githubusercontent.com/telegram-crypto/telegram-crypto/master/README.md",
 ]
 
 def extract_usernames(text):
