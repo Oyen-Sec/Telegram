@@ -19,13 +19,15 @@ async def main():
     global running
 
     if len(sys.argv) < 4:
-        print("Usage: python forwarder.py <source_chat> <message_id> <delay_seconds> [cycle_delay] [target]")
-        print("  delay       = seconds between each group")
-        print("  cycle_delay = seconds between full rounds (default 300 = 5 min)")
-        print("  target      = single group (omits sources.txt)")
+        print("Usage: python forwarder.py <source_chat> <message_id> <delay_seconds> [cycle_delay] [target|sources_file]")
+        print("  delay        = seconds between each group")
+        print("  cycle_delay  = seconds between full rounds (default 300 = 5 min)")
+        print("  target       = single group username (with @)")
+        print("  sources_file = path to custom sources file (without @)")
         print("Examples:")
         print("  python forwarder.py @LazarusDdos 85 60")
         print("  python forwarder.py @LazarusDdos 85 60 300 @testgroup")
+        print("  python forwarder.py @LazarusDdos 85 60 300 sources2.txt")
         sys.exit(1)
 
     source_chat = sys.argv[1]
@@ -34,9 +36,17 @@ async def main():
     cycle_delay = int(sys.argv[4]) if len(sys.argv) >= 5 else 300
 
     if len(sys.argv) >= 6:
-        sources = [sys.argv[5]]
-        cycle_delay = 0
-        log("INFO", f"Single target: {sources[0]}")
+        arg5 = sys.argv[5]
+        if arg5.startswith("@"):
+            sources = [arg5]
+            cycle_delay = 0
+            log("INFO", f"Single target: {sources[0]}")
+        else:
+            sources = load_sources(arg5)
+            if not sources:
+                log("ERROR", f"No target groups in {arg5}")
+                sys.exit(1)
+            log("INFO", f"Using custom sources file: {arg5}")
     else:
         sources = load_sources(config.SOURCES_FILE)
         if not sources:
